@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Capacitación Ley LDA - El Salvador</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; background: #f7f9fc; color: #222; }
+  h1 { color: #004080; }
+  #content > div { display: none; margin-top: 20px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 0 8px #ccc; }
+  label, input { font-size: 1.1rem; }
+  input[type="text"] { padding: 8px; width: 200px; margin-right: 10px; }
+  button { padding: 8px 16px; font-size: 1rem; cursor: pointer; background-color: #004080; color: white; border: none; border-radius: 4px; }
+  button:hover { background-color: #0059b3; }
+  .error { color: red; margin-top: 10px; }
+  iframe { width: 100%; height: 315px; border: none; border-radius: 8px; }
+  .quiz { margin-top: 15px; }
+</style>
+</head>
+<body>
+
+<h1>Capacitación Ley contra el Lavado de Dinero y de Activos (LDA)</h1>
+
+<p>Por favor, ingresa tu número de empleado para acceder a tu módulo de capacitación:</p>
+
+<label for="employeeNumber">Número de empleado:</label>
+<input type="text" id="employeeNumber" autocomplete="off" />
+<button onclick="checkEmployee()">Ingresar</button>
+
+<p class="error" id="errorMsg"></p>
+
+<div id="content">
+
+  <!-- Ventas -->
+  <div id="modulo-ventas">
+    <h2>Módulo Ventas</h2>
+    <p><strong>Objetivo:</strong> Identificar señales de alerta en clientes y prevenir riesgos en operaciones comerciales.</p>
+    <ul>
+      <li>Identificación y conocimiento del cliente</li>
+      <li>Riesgos en pagos en efectivo o por terceros</li>
+      <li>Señales de alerta en pedidos atípicos o urgentes</li>
+      <li>Reporte de operaciones inusuales</li>
+    </ul>
+    <h3>Video oficial UIF:</h3>
+    <iframe src="https://www.youtube.com/embed/WhGch-JYogA" allowfullscreen></iframe>
+    <div class="quiz">
+      <h3>Mini quiz:</h3>
+      <p>¿Cuál es una señal de alerta en ventas?</p>
+      <input type="radio" name="q1" id="q1a" value="wrong" /> <label for="q1a">Pago con tarjeta de crédito</label><br />
+      <input type="radio" name="q1" id="q1b" value="correct" /> <label for="q1b">Pago en efectivo sin justificación</label><br />
+      <input type="radio" name="q1" id="q1c" value="wrong" /> <label for="q1c">Compra con factura a nombre del cliente</label><br />
+      <button onclick="checkQuiz('ventas')">Enviar respuestas</button>
+      <p id="result-ventas"></p>
+    </div>
+  </div>
+
+  <!-- Finanzas -->
+  <div id="modulo-finanzas">
+    <h2>Módulo Finanzas y Contabilidad</h2>
+    <p><strong>Objetivo:</strong> Garantizar controles financieros y detectar operaciones sospechosas.</p>
+    <ul>
+      <li>Control de pagos y cobros inusuales</li>
+      <li>Revisión de transferencias y beneficiarios</li>
+      <li>Verificación documental</li>
+      <li>Reporte de operaciones sospechosas</li>
+    </ul>
+    <h3>Video oficial UIF:</h3>
+    <iframe src="https://www.youtube.com/embed/hVsyUXeioDo" allowfullscreen></iframe>
+    <div class="quiz">
+      <h3>Mini quiz:</h3>
+      <p>¿Qué debe verificar Finanzas?</p>
+      <input type="radio" name="q2" id="q2a" value="correct" /> <label for="q2a">Transferencias desde jurisdicciones de riesgo</label><br />
+      <input type="radio" name="q2" id="q2b" value="wrong" /> <label for="q2b">Pagos regulares a proveedores frecuentes</label><br />
+      <button onclick="checkQuiz('finanzas')">Enviar respuestas</button>
+      <p id="result-finanzas"></p>
+    </div>
+  </div>
+
+  <!-- Administración -->
+  <div id="modulo-administracion">
+    <h2>Módulo Administración</h2>
+    <p><strong>Objetivo:</strong> Verificar documentación y asegurar cumplimiento de políticas internas.</p>
+    <ul>
+      <li>Evaluación de documentos legales y fiscales</li>
+      <li>Control documental seguro</li>
+      <li>Identificación de inconsistencias</li>
+    </ul>
+    <h3>Video oficial UIF:</h3>
+    <iframe src="https://www.youtube.com/embed/EC7d2joimdM" allowfullscreen></iframe>
+    <div class="quiz">
+      <h3>Mini quiz:</h3>
+      <p>¿Qué es importante revisar en Administración?</p>
+      <input type="radio" name="q3" id="q3a" value="correct" /> <label for="q3a">Documentos fiscales y legales actualizados</label><br />
+      <input type="radio" name="q3" id="q3b" value="wrong" /> <label for="q3b">Solo los informes financieros</label><br />
+      <button onclick="checkQuiz('administracion')">Enviar respuestas</button>
+      <p id="result-administracion"></p>
+    </div>
+  </div>
+
+  <!-- Recursos Humanos -->
+  <div id="modulo-rrhh">
+    <h2>Módulo Recursos Humanos</h2>
+    <p><strong>Objetivo:</strong> Prevenir lavado de dinero a través del personal y procesos de contratación.</p>
+    <ul>
+      <li>Detección de documentos falsos en contratación</li>
+      <li>Validación de cuentas bancarias de empleados</li>
+      <li>Prevención de pagos a personas ficticias</li>
+      <li>Promoción de cultura de cumplimiento</li>
+    </ul>
+    <h3>Video oficial UIF:</h3>
+    <iframe src="https://www.youtube.com/embed/t1k8a0r94Ck" allowfullscreen></iframe>
+    <div class="quiz">
+      <h3>Mini quiz:</h3>
+      <p>¿Cuál es una práctica clave para RRHH?</p>
+      <input type="radio" name="q4" id="q4a" value="correct" /> <label for="q4a">Verificar autenticidad de documentos</label><br />
+      <input type="radio" name="q4" id="q4b" value="wrong" /> <label for="q4b">Contratar sin revisar antecedentes</label><br />
+      <button onclick="checkQuiz('rrhh')">Enviar respuestas</button>
+      <p id="result-rrhh"></p>
+    </div>
+  </div>
+
+  <!-- Proyectos -->
+  <div id="modulo-proyectos">
+    <h2>Módulo Proyectos</h2>
+    <p><strong>Objetivo:</strong> Asegurar la trazabilidad y origen de fondos para evitar lavado a través de proyectos.</p>
+    <ul>
+      <li>Evaluación del financiamiento y socios</li>
+      <li>Control de sobrecostos y pagos anticipados</li>
+      <li>Seguimiento de compras y recursos</li>
+    </ul>
+    <h3>Video oficial UIF:</h3>
+    <iframe src="https://www.youtube.com/embed/EC7d2joimdM" allowfullscreen></iframe>
+    <div class="quiz">
+      <h3>Mini quiz:</h3>
+      <p>¿Qué debe revisar el área de Proyectos?</p>
+      <input type="radio" name="q5" id="q5a" value="correct" /> <label for="q5a">Origen de fondos y socios</label><br />
+      <input type="radio" name="q5" id="q5b" value="wrong" /> <label for="q5b">Solo el avance físico</label><br />
+      <button onclick="checkQuiz('proyectos')">Enviar respuestas</button>
+      <p id="result-proyectos"></p>
+    </div>
+  </div>
+
+  <!-- Bodega -->
+  <div id="modulo-bodega">
+    <h2>Módulo Bodega y Logística</h2>
+    <p><strong>Objetivo:</strong> Controlar el inventario para prevenir operaciones ilícitas.</p>
+    <ul>
+      <li>Control de entradas y salidas de productos</li>
+      <li>Detección de devoluciones inusuales</li>
+      <li>Registro y trazabilidad coordinada</li>
+    </ul>
+    <h3>Video oficial UIF:</h3>
+    <iframe src="https://www.youtube.com/embed/WhGch-JYogA" allowfullscreen></iframe>
+    <div class="quiz">
+      <h3>Mini quiz:</h3>
+      <p>¿Qué debe controlar Bodega?</p>
+      <input type="radio" name="q6" id="q6a" value="correct" /> <label for="q6a">Entradas y salidas con registro claro</label><br />
+      <input type="radio" name="q6" id="q6b" value="wrong" /> <label for="q6b">Solo las entradas</label><br />
+      <button onclick="checkQuiz('bodega')">Enviar respuestas</button>
+      <p id="result-bodega"></p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Lista de empleados con departamentos (ejemplo)
+const employees = {
+  '1001': 'ventas',
+  '1002': 'finanzas',
+  '1003': 'administracion',
+  '1004': 'rrhh',
+  '1005': 'proyectos',
+  '1006': 'bodega',
+  // Agrega aquí más empleados y departamentos reales
+};
+
+function checkEmployee() {
+  const empNum = document.getElementById('employeeNumber').value.trim();
+  const errorMsg = document.getElementById('errorMsg');
+  errorMsg.textContent = '';
+
+  if (!empNum) {
+    errorMsg.textContent = 'Por favor ingresa un número de empleado válido.';
+    return;
+  }
+
+  const dept = employees[empNum];
+  if (!dept) {
+    errorMsg.textContent = 'Número de empleado no encontrado. Verifica e intenta de nuevo.';
+    return;
+  }
+
+  // Ocultar input inicial
+  document.getElementById('employeeNumber').style.display = 'none';
+  document.querySelector('button').style.display = 'none';
+  document.querySelector('p').style.display = 'none';
+  document.querySelector('label[for="employeeNumber"]').style.display = 'none';
+
+  // Mostrar módulo correspondiente
+  document.getElementById('content').style.display = 'block';
+  Object.keys(employees).forEach(key => {
+    const mod = employees[key];
+    const el = document.getElementById('modulo-' + mod);
+    if (el) el.style.display = 'none';
+  });
+
+  const showModule = document.getElementById('modulo-' + dept);
+  if (showModule) showModule.style.display = 'block';
+}
+
+// Función para chequear quizzes
+function checkQuiz(module) {
+  let correctAnswers = 0;
+  let totalQuestions = 1; // Cada quiz tiene 1 pregunta, pero puedes ampliar
+  let selected;
+
+  if (module === 'ventas') {
+    selected = document.querySelector('input[name="q1"]:checked');
+    if (!selected) alert('Por favor selecciona una respuesta.');
+    else if (selected.value === 'correct') correctAnswers++;
+    else correctAnswers = 0;
+    document.getElementById('result-ventas').textContent = (correctAnswers === totalQuestions) ? '¡Correcto! ✅' : 'Respuesta incorrecta, intenta de nuevo.';
+  }
+
+  if (module === 'finanzas') {
+    selected = document.querySelector('input[name="q2"]:checked');
+    if (!selected) alert('Por favor selecciona una respuesta.');
+    else if (selected.value === 'correct') correctAnswers++;
+    else correctAnswers = 0;
+    document.getElementById('result-finanzas').textContent = (correctAnswers === totalQuestions) ? '¡Correcto! ✅' : 'Respuesta incorrecta, intenta de nuevo.';
+  }
+
+  if (module === 'administracion') {
+    selected = document.querySelector('input[name="q3"]:checked');
+    if (!selected) alert('Por favor selecciona una respuesta.');
+    else if (selected.value === 'correct') correctAnswers++;
+    else correctAnswers = 0;
+    document.getElementById('result-administracion').textContent = (correctAnswers === totalQuestions) ? '¡Correcto! ✅' : 'Respuesta incorrecta, intenta de nuevo.';
+  }
+
+  if (module === 'rrhh') {
+    selected = document.querySelector('input[name="q4"]:checked');
+    if (!selected) alert('Por favor selecciona una respuesta.');
+    else if (selected.value === 'correct') correctAnswers++;
+    else correctAnswers = 0;
+    document.getElementById('result-rrhh').textContent = (correctAnswers === totalQuestions) ? '¡Correcto! ✅' : 'Respuesta incorrecta, intenta de nuevo.';
+  }
+
+  if (module === 'proyectos') {
+    selected = document.querySelector('input[name="q5"]:checked');
+    if (!selected) alert('Por favor selecciona una respuesta.');
+    else if (selected.value === 'correct') correctAnswers++;
+    else correctAnswers = 0;
+    document.getElementById('result-proyectos').textContent = (correctAnswers === totalQuestions) ? '¡Correcto! ✅' : 'Respuesta incorrecta, intenta de nuevo.';
+  }
+
+  if (module === 'bodega') {
+    selected = document.querySelector('input[name="q6"]:checked');
+    if (!selected) alert('Por favor selecciona una respuesta.');
+    else if (selected.value === 'correct') correctAnswers++;
+    else correctAnswers = 0;
+    document.getElementById('result-bodega').textContent = (correctAnswers === totalQuestions) ? '¡Correcto! ✅' : 'Respuesta incorrecta, intenta de nuevo.';
+  }
+}
+</script>
+
+</body>
+</html>
